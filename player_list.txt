@@ -1,13 +1,13 @@
-Name, Currently Playing?, Sport, Conference/League, Division, Current Team, Past Teams, Age, Height, Weight, Position, Jersey Number, Nationality, Race/Ethnicity, Accomplishments
-Klay Thompson, Yes, Basketball, Western, Pacific, Golden State Warriors, N/A, 33, 6'6", 220 lbs, Shooting Guard, #11, American, Black (Mixed-White), 4 Finals Wins | 5x NBA All-Star | 2x All-NBA Third Team | 1x NBA All-Defensive Second Team | 1x World Cup Gold | 1x Olympic Gold
-LeBron James, Yes, Basketball, Eastern, Pacific, Los Angeles Lakers, Cleveland Cavaliers x2 | Miami Heat, 38, 6'9", 250 lbs, Small Forward/Power Forward/Point Guard, #6, American, Black, 4x NBA Champ
-Kevin Durant, Yes, Basketball, Western, Pacific, Phoenix Suns, Seattle Supersonics/Oklahoma City Thunder | Golden State Warriors | Brooklyn Nets, 34, 6'11", 240 lbs, Small Forward/Power Forward, #35, American, Black, 2 Finals Wins
-Giannis Antetokounmpo, Yes, Basketball, Eastern, Central, Milwaukee Bucks, N/A, 28, 6'11", 242 lbs, Power Forward/Small Forward, #34, Nigerian-Greek, Black, 1 Finals Win
-Stephen Curry, Yes, Basketball, Western, Pacific, Golden State Warriors, N/A, 35, 6'3", 185 lbs, Point Guard, #30, American, Black (Mixed-White), 4 Finals Wins
-James Harden, Yes, Basketball, Eastern, Atlantic, Philadelphia 76ers, Oklahoma City Thunder | Houston Rockets | Brooklyn Nets, 33, 6'5", 220 lbs, Shooting Guard/Point Guard, #1, American, Black, 0 Finals Wins
-Russell Westbrook, Yes, Basketball, Western, Pacific, Los Angeles Clippers, Oklahoma City Thunder | Houston Rockets | Washington Wizards | Los Angeles Lakers, 34, 6'3", 200 lbs, Point Guard, 0, American, Black, 0 Finals Wins
-Draymond Green, Yes, Basketball, Western, Pacific, Golden State Warriors, N/A, 33, 6'6", 230 lbs, Power Forward, #23, American, Black, 4 Finals Wins
-Nikola Jokic, Yes, Basketball, Western, Northwest, Denver Nuggets, N/A, 28, 6'11", 284 lbs, Center, #15, Serbian, White, 0 Finals Wins
-Joel Embiid, Yes, Basketball, Eastern, Atlantic, Philadelphia 76ers, N/A, 29, 7'0", 280 lbs, Center, #21, Cameroonian, Black, 0 Finals Wins
-Ja Morant, Yes, Basketball, Western, Southwest, Memphis Grizzlies, N/A, 24, 6'3", 174 lbs, Point Guard, #12, American, Black, 0 Finals Wins
-Devin Booker, Yes, Basketball, Western, Pacific, Phoenix Suns, N/A, 26, 6'6", 206 lbs, Shooting Guard, #1, American, Black, 0 Finals Wins
+Name, Currently Playing?, Conference/League, Division, Current Team, Past Teams, Age, Height, Weight, Position, Jersey Number, Nationality, Race/Ethnicity, Accomplishments
+Klay Thompson, Yes, Western, Pacific, Golden State Warriors, N/A, 33, 6'6", 220 lbs, Shooting Guard, #11, American, Black (Mixed-White), 4 Finals Wins | 5x NBA All-Star | 2x All-NBA Third Team | 1x NBA All-Defensive Second Team | 1x World Cup Gold | 1x Olympic Gold
+LeBron James, Yes, Eastern, Pacific, Los Angeles Lakers, Cleveland Cavaliers x2 | Miami Heat, 38, 6'9", 250 lbs, Small Forward/Power Forward/Point Guard, #6, American, Black, 4x NBA Champ
+Kevin Durant, Yes, Western, Pacific, Phoenix Suns, Seattle Supersonics/Oklahoma City Thunder | Golden State Warriors | Brooklyn Nets, 34, 6'11", 240 lbs, Small Forward/Power Forward, #35, American, Black, 2 Finals Wins
+Giannis Antetokounmpo, Yes, Eastern, Central, Milwaukee Bucks, N/A, 28, 6'11", 242 lbs, Power Forward/Small Forward, #34, Nigerian-Greek, Black, 1 Finals Win
+Stephen Curry, Yes, Western, Pacific, Golden State Warriors, N/A, 35, 6'3", 185 lbs, Point Guard, #30, American, Black (Mixed-White), 4 Finals Wins
+James Harden, Yes, Eastern, Atlantic, Philadelphia 76ers, Oklahoma City Thunder | Houston Rockets | Brooklyn Nets, 33, 6'5", 220 lbs, Shooting Guard/Point Guard, #1, American, Black, 0 Finals Wins
+Russell Westbrook, Yes, Western, Pacific, Los Angeles Clippers, Oklahoma City Thunder | Houston Rockets | Washington Wizards | Los Angeles Lakers, 34, 6'3", 200 lbs, Point Guard, 0, American, Black, 0 Finals Wins
+Draymond Green, Yes, Western, Pacific, Golden State Warriors, N/A, 33, 6'6", 230 lbs, Power Forward, #23, American, Black, 4 Finals Wins
+Nikola Jokic, Yes, Western, Northwest, Denver Nuggets, N/A, 28, 6'11", 284 lbs, Center, #15, Serbian, White, 0 Finals Wins
+Joel Embiid, Yes, Eastern, Atlantic, Philadelphia 76ers, N/A, 29, 7'0", 280 lbs, Center, #21, Cameroonian, Black, 0 Finals Wins
+Ja Morant, Yes, Western, Southwest, Memphis Grizzlies, N/A, 24, 6'3", 174 lbs, Point Guard, #12, American, Black, 0 Finals Wins
+Devin Booker, Yes, Western, Pacific, Phoenix Suns, N/A, 26, 6'6", 206 lbs, Shooting Guard, #1, American, Black, 0 Finals Wins

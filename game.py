@@ -3,6 +3,50 @@ import random
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout
 
+import csv
+
+filename = '/Users/MichaelIke/Desktop/Python/Game Project/Guess-That-Player/all_seasons.csv'
+# Open the CSV file
+with open(filename, 'r') as csv_file:
+    # Create a DictReader object
+    csv_reader = csv.DictReader(csv_file)
+    
+    # Iterate over each row in the CSV file
+    for row in csv_reader:
+        # Access the data using the column names
+        player_name = row['player_name']
+        team_abbreviation = row['team_abbreviation']
+        age = float(row['age'])
+        player_height = float(row['player_height'])
+        player_weight = float(row['player_weight'])
+        college = row['college']
+        country = row['country']
+        draft_round = (row['draft_round'])
+
+        # Handle 'Undrafted' value for draft_round
+        draft_year = row['draft_year']
+        draft_round = int(row['draft_round']) if draft_round != 'Undrafted' else 'Undrafted'
+        draft_number = int(row['draft_number']) if row['draft_number'] != 'Undrafted' else 'Undrafted'
+        
+        gp = int(row['gp'])
+        pts = float(row['pts'])
+        reb = float(row['reb'])
+        ast = float(row['ast'])
+        net_rating = float(row['net_rating'])
+        oreb_pct = float(row['oreb_pct'])
+        dreb_pct = float(row['dreb_pct'])
+        usg_pct = float(row['usg_pct'])
+        ts_pct = float(row['ts_pct'])
+        ast_pct = float(row['ast_pct'])
+        season = row['season']
+        
+
+        
+        # Do something with the data
+        print(player_name, team_abbreviation, age, player_height, player_weight, draft_year, draft_round, draft_number, gp, pts, reb, ast, net_rating, oreb_pct, dreb_pct, usg_pct, ts_pct, ast_pct, season)
+
+
+
 # class MyWindow(QWidget):
 #     def __init__(self):
 #         super().__init__()
@@ -30,7 +74,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout
 #     # Run the event loop
 #     sys.exit(app.exec_())4
 
-file1 = open('/Users/MichaelIke/Desktop/Python/Game Project/player_list.txt', 'r')
+file1 = open('/Users/MichaelIke/Desktop/Python/Game Project/Guess-That-Player/player_list.txt', 'r')
 
 read1 = file1.read().split('\n')
 
@@ -42,23 +86,20 @@ for line in read1[1:]:
     player_dict = {
         'name': name,
         'currently_playing': info[1] == 'Yes',
-        'sport': info[2],
-        'conference_league': info[3],
-        'division': info[4],
-        'current_team': info[5],
-        'past_teams': info[6].split('|'),
-        'age': info[7],
-        'height': info[8],
-        'weight': info[9],
-        'position': info[10],
-        'jersey_number': info[11],
-        'nationality': info[12],
-        'race_ethnicity': info[13],
-        'accomplishments': info[14].split("|")
+        'conference_league': info[2],
+        'division': info[3],
+        'current_team': info[4],
+        'past_teams': info[5].split('|'),
+        'age': info[6],
+        'height': info[7],
+        'weight': info[8],
+        'position': info[9],
+        'jersey_number': info[10],
+        'nationality': info[11],
+        'race_ethnicity': info[12],
+        'accomplishments': info[13].split("|"),
     }
     file_dict[name] = player_dict
-
-#print(file_dict)
 
 class User():
   def __init__(self, name, guess_list, hint_list, points):
@@ -78,7 +119,6 @@ class Game():
       'Invalid Input: Make sure you input your choice as a valid option given.',
       'Incorrect Guess',
       'Repetitive Input: Make sure you chose a choice that hasnt been given already.',
-      'Hint Error: You must buy the "Sport" hint first.',
       'Hint Error: You must buy the "Conference/League" hint first.',
       'Hint Error: You must buy the "Division" hint first.',
       'Hint Error: You must buy the "Current Team" hint first.'
@@ -199,7 +239,6 @@ class Game():
           unlock1 = False
           unlock2 = False
           unlock3 = False
-          unlock4 = False
 
           while(self.current_player.points < 10):
             print(f'\n{self.current_player.name}s Points: {self.current_player.points}/10\n')
@@ -210,6 +249,7 @@ class Game():
             pick = input().strip()
             
             if pick == '1':
+              # if not already picked
               if pick not in pick_set:
                 print('\n',random_player['currently_playing'])
                 self.current_player.hint_list.append(random_player['currently_playing'])
@@ -217,59 +257,50 @@ class Game():
               else:
                 print(self.error_messages[2])
                 continue
+
             elif pick == '2':
+              # if not already picked
               if pick not in pick_set:
-                print('\n',random_player['sport'])
-                self.current_player.hint_list.append(random_player['sport'])
+                print('\n',random_player['conference_league'])
+                self.current_player.hint_list.append(random_player['conference_league'])
                 pick_set.add(pick)
                 unlock1 = True
               else:
                 print(self.error_messages[2])
                 continue
+
             elif pick == '3':
-              #if user hasnt picked the "Sport" hint first
+              #if user hasnt picked the "Conference/League" hint first
               if pick not in pick_set and not unlock1:
                 print(self.error_messages[3])
                 continue
+              # if not already picked
               if pick not in pick_set:
-                print('\n',random_player['conference_league'])
-                self.current_player.hint_list.append(random_player['conference_league'])
+                print('\n',random_player['division'])
+                self.current_player.hint_list.append(random_player['division'])
                 pick_set.add(pick)
                 unlock2 = True
               else:
                 print(self.error_messages[2])
                 continue
+
             elif pick == '4':
-              #if user hasnt picked the "Conference/League" hint first
+              #if user hasnt picked the "Division" hint first
               if pick not in pick_set and not unlock2:
                 print(self.error_messages[4])
                 continue
+              # if not already picked
               if pick not in pick_set:
-                print('\n',random_player['division'])
-                self.current_player.hint_list.append(random_player['division'])
+                print('\n',random_player['current_team'])
+                self.current_player.hint_list.append(random_player['current_team'])
                 pick_set.add(pick)
                 unlock3 = True
               else:
                 print(self.error_messages[2])
                 continue
+
             elif pick == '5':
-              #if user hasnt picked the "Division" hint first
-              if pick not in pick_set and not unlock3:
-                print(self.error_messages[5])
-                continue
-              if pick not in pick_set:
-                print('\n',random_player['current_team'])
-                self.current_player.hint_list.append(random_player['current_team'])
-                pick_set.add(pick)
-                unlock4 = True
-              else:
-                print(self.error_messages[2])
-                continue
-            elif pick == '6':
-              #if user hasnt picked the "Sport" hint first
-              if pick not in pick_set and not unlock1:
-                print(self.error_messages[3])
-                continue
+              # if not already picked
               if pick not in pick_set:
                 print('\n',random_player['past_teams'])
                 self.current_player.hint_list.append(random_player['past_teams'])
@@ -277,7 +308,9 @@ class Game():
               else:
                 print(self.error_messages[2])
                 continue
-            elif pick == '7':
+
+            elif pick == '6':
+              # if not already picked
               if pick not in pick_set:
                 print('\n',random_player['age'])
                 self.current_player.hint_list.append(random_player['age'])
@@ -285,7 +318,9 @@ class Game():
               else:
                 print(self.error_messages[2])
                 continue
-            elif pick == '8':
+
+            elif pick == '7':
+              # if not already picked
               if pick not in pick_set:
                 print('\n',random_player['height'])
                 self.current_player.hint_list.append(random_player['height'])
@@ -293,7 +328,9 @@ class Game():
               else:
                 print(self.error_messages[2])
                 continue
-            elif pick == '9':
+
+            elif pick == '8':
+              # if not already picked
               if pick not in pick_set:
                 print('\n',random_player['weight'])
                 self.current_player.hint_list.append(random_player['weight'])
@@ -301,11 +338,9 @@ class Game():
               else:
                 print(self.error_messages[2])
                 continue
-            elif pick == '10':
-              #if user hasnt picked the "Sport" hint first
-              if pick not in pick_set and not unlock1:
-                print(self.error_messages[3])
-                continue
+
+            elif pick == '9':
+              # if not already picked
               if pick not in pick_set:
                 print('\n',random_player['position'])
                 self.current_player.hint_list.append(random_player['position'])
@@ -313,7 +348,9 @@ class Game():
               else:
                 print(self.error_messages[2])
                 continue
-            elif pick == '11':
+
+            elif pick == '10':
+              # if not already picked
               if pick not in pick_set:
                 print('\n',random_player['jersey_number'])
                 self.current_player.hint_list.append(random_player['jersey_number'])
@@ -321,7 +358,8 @@ class Game():
               else:
                 print(self.error_messages[2])
                 continue
-            elif pick == '12':
+            elif pick == '11':
+              # if not already picked
               if pick not in pick_set:
                 print('\n',random_player['nationality'])
                 self.current_player.hint_list.append(random_player['nationality'])
@@ -329,22 +367,23 @@ class Game():
               else:
                 print(self.error_messages[2])
                 continue
-            elif pick == '13':
+
+            elif pick == '12':
+              # if not already picked
               if pick not in pick_set:
                 print('\n',random_player['race_ethnicity'])
                 self.current_player.hint_list.append(random_player['race_ethnicity'])
                 pick_set.add(pick)
               else:
+
                 print(self.error_messages[2])
                 continue
-            elif pick == '14':
-              #if user hasnt picked the "Sport" hint first
-              if pick not in pick_set and not unlock1:
-                print(self.error_messages[3])
+            elif pick == '13':
+              # if not already picked and 
+              if pick not in pick_set and not unlock3:
+                print(self.error_messages[5])
                 continue
-              if pick not in pick_set and not unlock4:
-                print(self.error_messages[6])
-                continue
+              # if not already picked
               if pick not in pick_set:
                 print('\n',random_player['accomplishments'])
                 self.current_player.hint_list.append(random_player['accomplishments'])
