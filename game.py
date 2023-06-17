@@ -130,7 +130,7 @@ class Game():
         self.game_over = False
         x = True
         while x:
-          print(f'{self.current_player.name}\'s Points: {self.current_player.points}/10\nCorrect Answer: {self.correct_answer}\n\nGood game {name}, what next?\n1. Main Menu or 2. Quit Game')
+          print(f'\n{self.current_player.name}\'s Points: {self.current_player.points}/10\nCorrect Answer: {self.correct_answer}\n\nGood game {name}, what next?\n1. Main Menu or 2. Quit Game')
           response = input().strip()
 
           if response == '1':
