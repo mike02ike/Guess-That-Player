@@ -5,7 +5,6 @@ import csv
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout
 from itertools import islice
 
-import csv
 
 filename = '/Users/MichaelIke/Desktop/Python/Game Project/Guess-That-Player/all_seasons.csv'
 
@@ -30,10 +29,10 @@ with open(filename, 'r') as csv_file:
         draft_year = row['draft_year']
         draft_round = row['draft_round']
         draft_number = row['draft_number']
-        gp = int(row['gp'])
-        pts = float(row['pts'])
-        reb = float(row['reb'])
-        ast = float(row['ast'])
+        games_played = int(row['gp'])
+        ppg = float(row['pts'])
+        rpg = float(row['reb'])
+        apg = float(row['ast'])
         net_rating = float(row['net_rating'])
         oreb_pct = float(row['oreb_pct'])
         dreb_pct = float(row['dreb_pct'])
@@ -54,10 +53,10 @@ with open(filename, 'r') as csv_file:
             'draft_year': draft_year,
             'draft_round': draft_round,
             'draft_number': draft_number,
-            'gp': gp,
-            'pts': pts,
-            'reb': reb,
-            'ast': ast,
+            'games_played': games_played,
+            'ppg': ppg,
+            'rpg': rpg,
+            'apg': apg,
             'net_rating': net_rating,
             'oreb_pct': oreb_pct,
             'dreb_pct': dreb_pct,
@@ -70,35 +69,8 @@ with open(filename, 'r') as csv_file:
         # Add the player dictionary to the file dictionary using the player's name as the key
         file_dict[player_name] = player_dict
       
-print(file_dict)
+#print(file_dict)
 
-
-# file1 = open('/Users/MichaelIke/Desktop/Python/Game Project/Guess-That-Player/player_list.txt', 'r')
-
-# read1 = file1.read().split('\n')
-
-# file_dict = {}
-# for line in read1[1:]:
-#     random_player_info = line.strip().split(',')
-#     name = random_player_info[0]
-#     info = [item.strip() for item in random_player_info]
-#     player_dict = {
-#         'name': name,
-#         'currently_playing': info[1] == 'Yes',
-#         'conference_league': info[2],
-#         'division': info[3],
-#         'current_team': info[4],
-#         'past_teams': info[5].split('|'),
-#         'age': info[6],
-#         'height': info[7],
-#         'weight': info[8],
-#         'position': info[9],
-#         'jersey_number': info[10],
-#         'nationality': info[11],
-#         'race_ethnicity': info[12],
-#         'accomplishments': info[13].split("|"),
-#     }
-#     file_dict[name] = player_dict
 
 class User():
   def __init__(self, name, guess_list, hint_list, points):
@@ -139,7 +111,7 @@ class Game():
       'You lose the game if you reach the 10-point limit',
       'You win the game if you correctly guess the players name before you get to 10 points.'
     ]
-  ##################################################
+ 
   def main_menu(self):
     menu = True
   
@@ -278,7 +250,7 @@ class Game():
             #   continue
             # if not already picked
             if pick not in pick_set:
-              print('\n',random_player['player_height'])
+              print(f'\n',random_player['player_height'],'cm')
               self.current_player.hint_list.append(random_player['player_height'])
               pick_set.add(pick)
               #unlock2 = True
@@ -293,7 +265,7 @@ class Game():
             #   continue
             # if not already picked
             if pick not in pick_set:
-              print('\n',random_player['player_weight'])
+              print(f'\n',random_player['player_weight'],'kg')
               self.current_player.hint_list.append(random_player['player_weight'])
               pick_set.add(pick)
               #unlock3 = True
@@ -354,8 +326,8 @@ class Game():
           elif pick == '10':
             # if not already picked
             if pick not in pick_set:
-              print('\n',random_player['gp'])
-              self.current_player.hint_list.append(random_player['gp'])
+              print('\n',random_player['games_played'])
+              self.current_player.hint_list.append(random_player['games_played'])
               pick_set.add(pick)
             else:
               print(self.error_messages[2])
@@ -364,8 +336,8 @@ class Game():
           elif pick == '11':
             # if not already picked
             if pick not in pick_set:
-              print('\n',random_player['pts'])
-              self.current_player.hint_list.append(random_player['pts'])
+              print('\n',random_player['ppg'])
+              self.current_player.hint_list.append(random_player['ppg'])
               pick_set.add(pick)
             else:
               print(self.error_messages[2])
@@ -374,8 +346,8 @@ class Game():
           elif pick == '12':
             # if not already picked
             if pick not in pick_set:
-              print('\n',random_player['reb'])
-              self.current_player.hint_list.append(random_player['reb'])
+              print('\n',random_player['rpg'])
+              self.current_player.hint_list.append(random_player['rpg'])
               pick_set.add(pick)
             else:
 
@@ -389,8 +361,8 @@ class Game():
             #   continue
             # if not already picked
             if pick not in pick_set:
-              print('\n',random_player['ast'])
-              self.current_player.hint_list.append(random_player['ast'])
+              print('\n',random_player['apg'])
+              self.current_player.hint_list.append(random_player['apg'])
               pick_set.add(pick)
             else:
               print(self.error_messages[2])
