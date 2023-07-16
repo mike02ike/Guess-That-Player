@@ -5,11 +5,24 @@ import csv
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout
 from itertools import islice
 
+#import login.txt
+login_file = '/Users/MichaelIke/Desktop/Python/Game Project/Guess-That-Player/login.txt'
+#import all_seasons.csv
+player_file = '/Users/MichaelIke/Desktop/Python/Game Project/Guess-That-Player/all_seasons.csv'
 
-filename = '/Users/MichaelIke/Desktop/Python/Game Project/Guess-That-Player/all_seasons.csv'
 
-# Open the CSV file
-with open(filename, 'r') as csv_file:
+
+    # for line in txt_reader[1:0]:
+    #   print(line)
+
+# print('')
+# line_to_add = 'This is the line to add.'
+
+# with open(login_file, 'a') as file:
+#   file.write(line_to_add + '\n')
+
+# Open the csv file
+with open(player_file, 'r') as csv_file:
     # Create a DictReader object
     csv_reader = csv.DictReader(csv_file)
     
@@ -18,56 +31,56 @@ with open(filename, 'r') as csv_file:
 
     # Iterate over each row in the CSV file
     for row in csv_reader:
-        # Access the data using the column names
-        player_name = row['player_name']
-        team_abbreviation = row['team_abbreviation']
-        age = float(row['age'])
-        player_height = float(row['player_height'])
-        player_weight = float(row['player_weight'])
-        college = row['college']
-        country = row['country']
-        draft_year = row['draft_year']
-        draft_round = row['draft_round']
-        draft_number = row['draft_number']
-        games_played = int(row['gp'])
-        ppg = float(row['pts'])
-        rpg = float(row['reb'])
-        apg = float(row['ast'])
-        net_rating = float(row['net_rating'])
-        oreb_pct = float(row['oreb_pct'])
-        dreb_pct = float(row['dreb_pct'])
-        usg_pct = float(row['usg_pct'])
-        ts_pct = float(row['ts_pct'])
-        ast_pct = float(row['ast_pct'])
-        season = row['season']
+      # Access the data using the column names
+      player_name = row['player_name']
+      team_abbreviation = row['team_abbreviation']
+      age = float(row['age'])
+      player_height = float(row['player_height'])
+      player_weight = float(row['player_weight'])
+      college = row['college']
+      country = row['country']
+      draft_year = row['draft_year']
+      draft_round = row['draft_round']
+      draft_number = row['draft_number']
+      games_played = int(row['gp'])
+      ppg = float(row['pts'])
+      rpg = float(row['reb'])
+      apg = float(row['ast'])
+      net_rating = float(row['net_rating'])
+      oreb_pct = float(row['oreb_pct'])
+      dreb_pct = float(row['dreb_pct'])
+      usg_pct = float(row['usg_pct'])
+      ts_pct = float(row['ts_pct'])
+      ast_pct = float(row['ast_pct'])
+      season = row['season']
 
-        # Create a dictionary for the player
-        player_dict = {
-            'name': player_name,
-            'team_abbreviation': team_abbreviation,
-            'age': age,
-            'player_height': player_height,
-            'player_weight': player_weight,
-            'college': college,
-            'country': country,
-            'draft_year': draft_year,
-            'draft_round': draft_round,
-            'draft_number': draft_number,
-            'games_played': games_played,
-            'ppg': ppg,
-            'rpg': rpg,
-            'apg': apg,
-            'net_rating': net_rating,
-            'oreb_pct': oreb_pct,
-            'dreb_pct': dreb_pct,
-            'usg_pct': usg_pct,
-            'ts_pct': ts_pct,
-            'ast_pct': ast_pct,
-            'season': season,
-        }
+      # Create a dictionary for the player
+      player_dict = {
+        'name': player_name,
+        'team_abbreviation': team_abbreviation,
+        'age': age,
+        'player_height': player_height,
+        'player_weight': player_weight,
+        'college': college,
+        'country': country,
+        'draft_year': draft_year,
+        'draft_round': draft_round,
+        'draft_number': draft_number,
+        'games_played': games_played,
+        'ppg': ppg,
+        'rpg': rpg,
+        'apg': apg,
+        'net_rating': net_rating,
+        'oreb_pct': oreb_pct,
+        'dreb_pct': dreb_pct,
+        'usg_pct': usg_pct,
+        'ts_pct': ts_pct,
+        'ast_pct': ast_pct,
+        'season': season,
+      }
 
-        # Add the player dictionary to the file dictionary using the player's name as the key
-        file_dict[player_name] = player_dict
+      # Add the player dictionary to the file dictionary using the player's name as the key
+      file_dict[player_name] = player_dict
       
 #print(file_dict)
 
@@ -91,7 +104,10 @@ class Game():
       'Repetitive Input: Make sure you chose a choice that hasnt been given already.',
       'Hint Error: You must buy the "Conference/League" hint first.',
       'Hint Error: You must buy the "Division" hint first.',
-      'Hint Error: You must buy the "Current Team" hint first.'
+      'Hint Error: You must buy the "Current Team" hint first.',
+      'Incorrect Password',
+      'Username Not Found'
+
     ]
     self.gameRules = [
       '\nObjective:\nThe goal of this game is to guess the name of a randomly selected professional athlete within the point limit.\n',
@@ -115,9 +131,10 @@ class Game():
   def main_menu(self):
     menu = True
   
-    print('Welcome to Guess that Player! Please enter your name below.\n')
-    name = input().strip()
-    self.current_player = User(name, [], [], 0)
+    # print('Welcome to Guess that Player! Please enter your name below.\n')
+  
+    self.login_signUp()
+    name = self.current_player.name
 
     #Main Menu
     while not self.game_over:
@@ -463,6 +480,69 @@ class Game():
         print(self.error_messages[0])
 
   #End play function
+
+  def login_signUp(self):
+    login_menu = True
+    user_loop = True
+    pass_loop = True
+    
+    # Open the txt file
+    with open(login_file, 'r') as txt_file:
+      txt_reader = txt_file.readlines()
+    print('Welcome to Guess that Player!\n')
+
+    while(login_menu):
+      print('Select an option below (1 - 3).\n1. Login\n2. Sign Up\n3. Play as Guest\n')
+      option = input().strip()
+
+      #Login
+      if option == '1':
+        login_menu = False
+        print('/////LOGIN/////\n\n')
+        for line in txt_reader[1:]:
+          username, password, name = line.split()
+
+          while(user_loop == True):
+
+            print('Enter your Username')
+            entered_username = input().strip()
+            if entered_username == username:
+              user_loop = False
+
+              while(pass_loop):
+                print('Enter your Password')
+                entered_password = input().strip()
+
+                if entered_password == password:
+                  pass_loop = False
+                  print(f'Welcome {name}')
+                  self.current_player = User(name, [], [], 0)
+
+                else:
+                  print(self.error_messages[6])
+
+            else:
+                  print(self.error_messages[7])
+
+
+
+      #Sign Up
+      elif option == '2':
+        login_menu = False
+
+      #Play as Guest
+      elif option == '3':
+        login_menu = False
+    
+      else:
+        print(self.error_messages[0])
+
+    line_to_add = 'This is the line to add.'
+
+    with open(login_file, 'a') as file:
+      file.write(line_to_add + '\n')
+  
+  #end login_signUp
 
 #End Game Class
 
