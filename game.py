@@ -99,14 +99,14 @@ class Game():
     self.correct_answer = None
     self.game_over = False
     self.error_messages = [
-      'Invalid Input: Make sure you input your choice as a valid option given.',
-      'Incorrect Guess',
-      'Repetitive Input: Make sure you chose a choice that hasnt been given already.',
-      'Hint Error: You must buy the "Conference/League" hint first.',
-      'Hint Error: You must buy the "Division" hint first.',
-      'Hint Error: You must buy the "Current Team" hint first.',
-      'Incorrect Password',
-      'Username Not Found'
+      'Invalid Input: Make sure you input your choice as a valid option given.\n',
+      'Incorrect Guess\n',
+      'Repetitive Input: Make sure you chose a choice that hasnt been given already.\n',
+      'Hint Error: You must buy the "Conference/League" hint first.\n',
+      'Hint Error: You must buy the "Division" hint first.\n',
+      'Hint Error: You must buy the "Current Team" hint first.\n',
+      'Incorrect Password\n',
+      'Username Not Found\n'
 
     ]
     self.gameRules = [
@@ -495,27 +495,29 @@ class Game():
       print('Select an option below (1 - 3).\n1. Login\n2. Sign Up\n3. Play as Guest\n')
       option = input().strip()
 
+
       #Login
       if option == '1':
         login_menu = False
         print('/////LOGIN/////\n\n')
         for line in txt_reader[1:]:
           username, password, name = line.split()
+          user_loop = True
 
-          while(user_loop == True):
+          while(user_loop):
 
-            print('Enter your Username')
+            print('Enter your Username\n')
             entered_username = input().strip()
             if entered_username == username:
               user_loop = False
 
               while(pass_loop):
-                print('Enter your Password')
+                print('Enter your Password\n')
                 entered_password = input().strip()
 
                 if entered_password == password:
                   pass_loop = False
-                  print(f'Welcome {name}')
+                  #print(f'Welcome {name}')
                   self.current_player = User(name, [], [], 0)
 
                 else:
@@ -525,22 +527,27 @@ class Game():
                   print(self.error_messages[7])
 
 
-
       #Sign Up
-      elif option == '2':
-        login_menu = False
+    #   elif option == '2':
+    #     login_menu = False
+
+    #         line_to_add = 'This is the line to add.'
+
+    # with open(login_file, 'a') as file:
+    #   file.write(line_to_add + '\n')
 
       #Play as Guest
       elif option == '3':
+        print('/////PLAYING AS GUEST/////\n\n')
+        print('Enter your Name\n')
+        guest_name = input().strip()
+        self.current_player = User(guest_name, [], [], 0)
         login_menu = False
     
       else:
         print(self.error_messages[0])
 
-    line_to_add = 'This is the line to add.'
 
-    with open(login_file, 'a') as file:
-      file.write(line_to_add + '\n')
   
   #end login_signUp
 
