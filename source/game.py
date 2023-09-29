@@ -127,7 +127,9 @@ class Game():
       'You lose the game if you reach the 10-point limit',
       'You win the game if you correctly guess the players name before you get to 10 points.'
     ]
- 
+
+
+  #Main Menu
   def main_menu(self):
     menu = True
   
@@ -555,38 +557,5 @@ class Game():
 
 
 
-
-
-
-
 game = Game()
 game.main_menu()
-
-
-
-# class MyWindow(QWidget):
-#     def __init__(self):
-#         super().__init__()
-
-#         # Create the label
-#         self.label = QLabel('Welcome to Guess that Player! Please enter your name below.\n')
-
-#         # Create the layout
-#         layout = QVBoxLayout()
-#         layout.addWidget(self.label)
-
-#         # Set the layout
-#         self.setLayout(layout)
-
-# if __name__ == '__main__':
-#     # Create the application
-#     app = QApplication(sys.argv)
-
-#     # Create the main window
-#     window = MyWindow()
-
-#     # Show the window
-#     window.show()
-
-#     # Run the event loop
-#     sys.exit(app.exec_())4
